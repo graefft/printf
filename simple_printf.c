@@ -58,6 +58,27 @@ int _printf(const char *fmt, ...)
                                 dval = va_arg(args, int);
                                 putchar(dval);
                                 break;
+			case 'b':
+				dval = va_arg(args, int);
+				if (dval == 0)
+					putchar('0');
+				if (dval < 0)
+					putchar('-');
+				for (exp = 1; dval/exp != 0; exp = exp * 2)
+                			;
+        			while (exp > 1)
+        			{
+                			exp = exp / 2;
+                		if (dval / exp > 0)
+                		{
+                        		dval = dval - exp;
+                        		putchar('1');
+                		}		
+                		else
+                        		putchar('0');
+        			}		
+			case 'x':
+			case 'X':
 			}
 		}
 		else
