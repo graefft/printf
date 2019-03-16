@@ -31,13 +31,16 @@ int _printf(char *fmt, ...)
 
 	sval = fmt;
 
-        for(i = 0; sval[i] != '\0'; i++, j++)
+        for(i = 0; sval[i] != '\0'; i++)
         {
                 if (sval[i] == '%')
                 {
 			i++;
-			if (sval[i] == funcarr[j].c)
-				funcarr[j].f(args);
+			for (j = 0; funcarr[j].c != '\0'; j++)
+			{
+				if (sval[i] == funcarr[j].c)
+					funcarr[j].f(args);
+			}
 		}
 		else
 			putchar(sval[i]);
