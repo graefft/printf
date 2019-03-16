@@ -8,12 +8,10 @@ Write your own printf function
 It writes output to _stdout_, the standard output stream.
 
 ### Requirements
-* Ubuntu 14.04 LTS
-* gcc 4.8.4 (-Wall -Werror -Wextra -pedantic)
-* Betty styling
-
-### Built With
-* C
+* __Language:__ C
+* __OS:__ Ubuntu 14.04 LTS
+* __Compiler:__ gcc 4.8.4 (-Wall -Werror -Wextra -pedantic)
+* __Style:__ [Betty Holberton style](https://github.com/holbertonschool/Betty)
 
 ### Authors
 Scout Curry, Thomas Graeff
