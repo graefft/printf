@@ -10,15 +10,17 @@
 typedef struct printer
 {
 	char c;
-	void (*f)(va_list ap);
+	int(*f)(va_list ap);
 } p_t;
 
+
+void tusBasicTester();
 int _printf(char *fmt, ...);
 void (*print_array(char s))();
-void print_int(va_list dval);
-void print_string(va_list sval);
-void print_char(va_list c);
-void print_binary(va_list dval);
-void print_hex(va_list dval);
+int print_int(va_list dval);
+int print_string(va_list sval);
+int print_char(va_list c);
+int print_binary(va_list dval);
+int print_hex(va_list dval);
 
 #endif

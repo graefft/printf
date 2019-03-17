@@ -6,10 +6,11 @@
 *
 */
 
-void print_int(va_list dval)
+int print_int(va_list dval)
 {
 	int exp, temp;
 	int arg;
+	int counter = 0;
 
 	arg = va_arg(dval, int);
 	if (arg == 0)
@@ -17,6 +18,7 @@ void print_int(va_list dval)
 	if (arg < 0)
 	{
 		putchar ('-');
+		counter++;
 		arg = arg * -1;
 	}
 	for (exp = 1; arg/exp != 0; exp = exp * 10)
@@ -26,8 +28,10 @@ void print_int(va_list dval)
 		exp = exp / 10;
 		temp = arg/exp;
 		putchar(temp + '0');
+		counter++;
 		arg = arg % exp;
 	}
+	return (counter);
 }
 
 /**
@@ -36,14 +40,19 @@ void print_int(va_list dval)
 *
 */
 
-void print_string(va_list sval)
+int print_string(va_list sval)
 {
 	int i;
 	char *arg;
+	int counter = 0;
 
 	arg = va_arg(sval, char *);
-	for(i = 0; arg[i] != '\0'; i++)
+	for (i = 0; arg[i] != '\0'; i++)
+	{
 		putchar(arg[i]);
+		counter++;
+	}
+	return (counter);
 }
 
 /**
@@ -52,12 +61,16 @@ void print_string(va_list sval)
 *
 */
 
-void print_char(va_list c)
+int print_char(va_list c)
 {
 	char arg;
+	int counter = 0;
 
 	arg = va_arg(c, int);
 	putchar(arg);
+	counter++;
+
+	return (counter);
 }
 
 /**
@@ -67,16 +80,23 @@ void print_char(va_list c)
 *
 */
 
-void print_binary(va_list dval)
+int print_binary(va_list dval)
 {
 	int exp = 0;
 	int arg;
+	int counter = 0;
 
 	arg = va_arg(dval, int);
 	if (arg == 0)
+	{
+		counter++;
 		putchar('0');
+	}
 	if (arg < 0)
+	{
 		putchar('-');
+		counter++;
+	}
 	for (exp = 1; arg/exp != 0; exp = exp * 2)
 		;
 	while (exp > 1)
@@ -86,10 +106,15 @@ void print_binary(va_list dval)
 		{
 			arg = arg - exp;
 			putchar('1');
+			counter++;
 		}
 		else
+		{
 			putchar('0');
+			counter++;
+		}
 	}
+	return (counter);
 }
 
 /**
@@ -98,24 +123,47 @@ void print_binary(va_list dval)
 *
 */
 
-void print_hex(va_list dval)
+int print_hex(va_list dval)
 {
 	int capoffset;
-	int exp;
+	int rem;
 	int arg;
+	int counter = 0;
 
 	arg = va_arg(dval, int);
-	capoffset = 87;
-	if (arg == 'X')
+	if (arg == 'x')
+		capoffset = 87;
+	else if (arg == 'X')
 		capoffset = 55;
 	if (arg == 0)
+	{
 		putchar('0');
+		counter++;
+	}
 	if (arg < 0)
 	{
 		putchar ('-');
+		counter++;
 		arg = arg * -1;
 	}
-	for (exp = 1; arg/exp != 0; exp = exp * 16)
+	while (arg)
+	{
+		rem = arg % 16;
+
+		if (rem >= 10)
+		{
+			putchar(capoffset + (rem - 10));
+			counter++;
+		}
+		else
+		{
+			putchar(capoffset + rem);
+			counter++;
+		}
+		arg = arg / 16;
+	}
+
+/*	for (exp = 1; arg/exp != 0; exp = exp * 16)
 		;
 	while (exp > 1)
 	{
@@ -131,13 +179,6 @@ void print_hex(va_list dval)
 			putchar(arg/exp + '0');
 		arg = arg % exp;
 	}
+*/
+	return (counter);
 }
-
-
-
-
-
-
-
-
-
