@@ -1,0 +1,281 @@
+.TH _PRINTF 3 "15 March 2019" "VERSION 1.0" "_printf man page"
+.SH NAME
+_printf \- formatted output conversion.
+.SH SYNOPSIS
+.B #include """holberton.h"""
+.sp
+.BI "_printf(const char * " format ", ...);"
+.SH DESCRIPTION
+The function 
+.BR _printf ()
+produces output according to a 
+.I format
+as described below. The function writes output to 
+.IR stdout , 
+the standard output stream.
+.PP
+This function writes output under the control of a 
+.I format
+string that specifies how subsequent arguments (or arguments accessed via
+the variable-length argument facilities of
+.BR stdarg (3))
+are converted for output.
+
+.SS Return value
+Upon successful return, this function returns the number of characters
+printed (excluding the null byte used to end output to strings).
+.PP
+If an output error is encountered, a negative value is returned.
+.SS Format of the format string
+The format string is a character string, beginning and ending
+in its initial shift state, if any.
+The format string is composed of zero or more directives: ordinary
+characters (not
+.BR % ),
+which are copied unchanged to the output stream;
+and conversion specifications, each of which results in fetching zero or
+more subsequent arguments.
+Each conversion specification is introduced by
+the character
+.BR % ,
+and ends with a
+.IR "conversion specifier" .
+In between there may be (in this order) zero or more
+.IR flags ,
+an optional minimum
+.IR "field width" ,
+an optional
+.I precision
+and an optional
+.IR "length modifier" .
+.SS The flag characters
+The character % is followed by zero or more of the following flags:
+.TP
+.B #
+The value should be converted to an "alternate form".
+For
+.B o
+conversions, the first character of the output string is made zero
+(by prefixing a 0 if it was not zero already).
+For
+.B x
+and
+.B X
+conversions, a nonzero result has the string "0x" (or "0X" for
+.B X
+conversions) prepended to it.
+.TP
+.B \&0
+The value should be zero padded.
+For
+.BR d ,
+.BR i ,
+.BR o ,
+.BR u ,
+.BR x ,
+and
+.BR X 
+conversions, the converted value is padded on the left with zeros rather
+than blanks.
+If the
+.B \&0
+and
+.B \-
+flags both appear, the
+.B \&0
+flag is ignored.
+If a precision is given with a numeric conversion
+.RB ( d ,
+.BR i ,
+.BR o ,
+.BR u ,
+.BR x ,
+and
+.BR X ),
+the
+.B \&0
+flag is ignored.
+For other conversions, the behavior is undefined.
+.TP
+.B \-
+The converted value is to be left adjusted on the field boundary.
+(The default is right justification.)
+Except for
+.B n
+conversions, the converted value is padded on the right with blanks, rather
+than on the left with blanks or zeros.
+A
+.B \-
+overrides a
+.B \&0
+if both are given.
+.TP
+.B +
+A sign (+ or \-) should always be placed before a number produced by a signed
+conversion.
+By default a sign is used only for negative numbers.
+
+.SS The field width
+An optional decimal digit string (with nonzero first digit) specifying
+a minimum field width.
+If the converted value has fewer characters
+than the field width, it will be padded with spaces on the left
+(or right, if the left-adjustment flag has been given).
+
+.SS The precision
+An optional precision, in the form of a period (\(aq.\(aq)  followed by an
+optional decimal digit string.
+Instead of a decimal digit string one may write "*" or "*m$"
+(for some decimal integer m) to specify that the precision
+is given in the next argument, or in the m-th argument, respectively,
+which must be of type
+.IR int .
+If the precision is given as just \(aq.\(aq, the precision is taken to
+be zero.
+A negative precision is taken as if the precision were omitted.
+This gives the minimum number of digits to appear for
+.BR d ,
+.BR i ,
+.BR o ,
+.BR u ,
+.BR x ,
+and
+.B X
+conversions.
+
+.SS The length modifier
+Here, "integer conversion" stands for
+.BR d ,
+.BR i ,
+.BR o ,
+.BR u ,
+.BR x ,
+or
+.B X
+conversion.
+.TP
+.B h
+A following integer conversion corresponds to a
+.I short int
+or
+.I unsigned short int
+argument.
+.TP
+.B l
+(ell) A following integer conversion corresponds to a
+.I long int
+or
+.I unsigned long int
+argument.
+
+.SS The conversion specifier
+A character that specifies the type of conversion to be applied.
+The conversion specifiers and their meanings are:
+.TP
+.BR d ", " i
+The
+.I int
+argument is converted to signed decimal notation.
+The precision, if any, gives the minimum number of digits
+that must appear; if the converted value requires fewer digits, it is
+padded on the left with zeros.
+The default precision is 1.
+When 0 is printed with an explicit precision 0, the output is empty.
+.TP
+.BR o ", " u ", " x ", " X
+The
+.I "unsigned int"
+argument is converted to unsigned octal
+.RB ( o ),
+unsigned decimal
+.RB ( u ),
+or unsigned hexadecimal
+.RB ( x
+and
+.BR X )
+notation.
+The letters
+.B abcdef
+are used for
+.B x
+conversions; the letters
+.B ABCDEF
+are used for
+.B X
+conversions.
+.TP
+.B c
+If no
+.B l
+modifier is present, the
+.I int
+argument is converted to an
+.IR "unsigned char" ,
+and the resulting character is written.
+If an
+.B l
+modifier is present, the
+.I wint_t
+(wide character) argument is converted to a multibyte sequence by a call
+to the
+.BR wcrtomb (3)
+function, with a conversion state starting in the initial state, and the
+resulting multibyte string is written.
+.TP
+.B r
+Prints the string in reverse.
+.TP
+.B R
+Prints the string in rot13 encryption.
+.TP
+.B s
+If no
+.B l
+modifier is present: The
+.I "const char\ *"
+argument is expected to be a pointer to an array of character type (pointer
+to a string).
+Characters from the array are written up to (but not
+including) a terminating null byte (\(aq\\0\(aq);
+If an
+.B l
+modifier is present: The
+.I "const wchar_t\ *"
+argument is expected to be a pointer to an array of wide characters.
+Wide characters from the array are converted to multibyte characters
+(each by a call to the
+.BR wcrtomb (3)
+function, with a conversion state starting in the initial state before
+the first wide character), up to and including a terminating null
+wide character.
+The resulting multibyte characters are written up to
+(but not including) the terminating null byte.
+If a precision is
+specified, no more bytes than the number specified are written, but
+no partial multibyte characters are written.
+Note that the precision
+determines the number of
+.I bytes
+written, not the number of
+.I wide characters
+or
+.IR "screen positions" .
+The array must contain a terminating null wide character, unless a
+precision is given and it is so small that the number of bytes written
+exceeds it before the end of the array is reached.
+if a precision is specified, no more than the number specified
+are written.
+If a precision is given, no null byte need be present;
+if the precision is not specified, or is greater than the size of the
+array, the array must contain a terminating null byte.
+.TP
+.B p
+The
+.I "void\ *"
+pointer argument is printed in hexadecimal (as if by
+.B %#x
+or
+.BR  %#lx ).
+
+.SH AUTHORS
+Scout Curry, Thomas Graeff
