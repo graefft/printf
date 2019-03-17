@@ -28,10 +28,10 @@ int print_int(va_list dval)
 		exp = exp / 10;
 		temp = arg/exp;
 		putchar(temp + '0');
-		counter++;
 		arg = arg % exp;
+		counter++;
 	}
-	counter++;
+	counter--;
 	return (counter);
 }
 
@@ -53,6 +53,7 @@ int print_string(va_list sval)
 		putchar(arg[i]);
 		counter++;
 	}
+	counter--;
 	return (counter);
 }
 
@@ -65,13 +66,11 @@ int print_string(va_list sval)
 int print_char(va_list c)
 {
 	char arg;
-	int counter = 0;
 
 	arg = va_arg(c, int);
 	putchar(arg);
-	counter++;
 
-	return (counter);
+	return (0);
 }
 
 /**
@@ -85,18 +84,15 @@ int print_binary(va_list dval)
 {
 	int exp = 0;
 	int arg;
-	int counter = 0;
 
 	arg = va_arg(dval, int);
 	if (arg == 0)
 	{
-		counter++;
 		putchar('0');
 	}
 	if (arg < 0)
 	{
 		putchar('-');
-		counter++;
 	}
 	for (exp = 1; arg/exp != 0; exp = exp * 2)
 		;
@@ -107,15 +103,13 @@ int print_binary(va_list dval)
 		{
 			arg = arg - exp;
 			putchar('1');
-			counter++;
 		}
 		else
 		{
 			putchar('0');
-			counter++;
 		}
 	}
-	return (counter);
+	return (0);
 }
 
 /**
