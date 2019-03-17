@@ -31,6 +31,7 @@ int print_int(va_list dval)
 		counter++;
 		arg = arg % exp;
 	}
+	counter++;
 	return (counter);
 }
 
