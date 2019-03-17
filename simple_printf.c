@@ -1,10 +1,9 @@
 #include "holberton.h"
 
 /**
-*
-*
-*
-*
+* _printf - produces output according to a format
+* @fmt: specifier
+* Return: character count
 */
 
 int _printf(char *fmt, ...)
@@ -16,26 +15,22 @@ int _printf(char *fmt, ...)
 /*	void (*pfunc)(va_list);*/
 
 	p_t funcarr[] = {
-                {'i', print_int},
-                {'d', print_int},
-                {'s', print_string},
-                {'c', print_char},
-                {'x', print_hex},
-                {'b', print_binary},
-                {'%', print_char}
+		{'i', print_int},
+		{'d', print_int},
+		{'s', print_string},
+		{'c', print_char},
+		{'x', print_hex},
+		{'b', print_binary},
+		{'%', print_char}
 	};
-
 	va_start(args, fmt);
-
-        if (fmt == NULL)
-                return (1);
-
+	if (fmt == NULL)
+		return (1);
 	sval = fmt;
-
-        for (i = 0; sval[i] != '\0'; i++, counter++)
-        {
-                if (sval[i] == '%')
-                {
+	for (i = 0; sval[i] != '\0'; i++, counter++)
+	{
+		if (sval[i] == '%')
+		{
 			i++;
 			for (j = 0; funcarr[j].c != '\0'; j++)
 			{
@@ -47,7 +42,6 @@ int _printf(char *fmt, ...)
 		}
 		else
 			putchar(sval[i]);
-
 	}
 	return (counter);
 }
