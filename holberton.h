@@ -7,13 +7,18 @@
 #include <unistd.h>
 #include <string.h>
 
+/**
+ * struct printer - prints diff function depending on argument
+ * @c: conversion specifier
+ * @f: function to use
+ */
 typedef struct printer
 {
 	char c;
-	int(*f)(va_list ap);
+	int (*f)(va_list ap);
 } p_t;
 
-void tusBasicTester();
+void tusBasicTester(void);
 int _printf(char *fmt, ...);
 void (*print_array(char s))();
 int print_int(va_list dval);
