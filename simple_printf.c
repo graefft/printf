@@ -73,6 +73,9 @@ int _printf(const char *format, ...)
 		{'R', print_rot13},
 		{'u', print_un},
 		{'%', print_perc},
+		{'r', print_rev},
+		{'R', print_rot13},
+		{'u', print_un},
 		{0, NULL}
 	};
 	va_start(args, format);
