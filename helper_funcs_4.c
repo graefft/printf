@@ -8,17 +8,17 @@
 
 int print_string(va_list sval)
 {
-        int i;
-        char *arg;
-        int counter = 0;
+	int i;
+	char *arg;
+	int counter = 0;
 
-        arg = va_arg(sval, char *);
-        for (i = 0; arg[i] != '\0'; i++)
-        {
-                _putchar(arg[i]);
-                counter++;
-        }
-        return (counter);
+	arg = va_arg(sval, char *);
+	for (i = 0; arg[i] != '\0'; i++)
+	{
+		_putchar(arg[i]);
+		counter++;
+	}
+	return (counter);
 }
 
 /**
@@ -30,12 +30,12 @@ int print_string(va_list sval)
 
 int print_char(va_list c)
 {
-        char arg;
+	char arg;
 
-        arg = va_arg(c, int);
-        _putchar(arg);
+	arg = va_arg(c, int);
+	_putchar(arg);
 
-        return (1);
+	return (1);
 }
 
 /**
@@ -47,8 +47,8 @@ int print_char(va_list c)
 
 int print_perc(va_list c)
 {
-        (void)c;
+	(void)c;
 
-        _putchar('%');
-        return (1);
+	_putchar('%');
+	return (1);
 }
