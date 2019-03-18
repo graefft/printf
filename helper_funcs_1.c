@@ -39,36 +39,9 @@ int print_number(int i)
 int print_int(va_list dval)
 {
 	int i = va_arg(dval, int);
-	
+
 	return (print_number(i));
 }
-/*	int exponent, temp;
-	int arg;
-	int counter = 0;
-
-	arg = va_arg(dval, int);
-	if (arg == 0)
-		_putchar('0');
-	if (arg < 0)
-	{
-		_putchar('-');
-		counter++;
-		arg = arg * -1;
-	}
-	for (exponent = 1; arg / exponent != 0; exponent = exponent * 10)
-		;
-	while (arg != 0)
-	{
-		exponent = exponent / 10;
-		temp = arg / exponent;
-		_putchar(temp + '0');
-		arg = arg % exponent;
-		counter++;
-	}
-	counter--;
-	return (counter);
-}
-*/
 
 
 /**
