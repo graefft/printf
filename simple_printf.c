@@ -1,9 +1,12 @@
 #include "holberton.h"
 
 /**
-* _printf - produces output according to a format
-* @fmt: specifier
-* Return: character count
+* pf_helper - main algorithm for printf
+* @fmt: format string
+* @funcarr: array of structs to compare and exe according to specifier
+* @args: va_list argument
+*
+* Return: counter on success, -1 if failure
 */
 
 int pf_helper(const char *fmt, p_t funcarr[], va_list args)
@@ -54,10 +57,11 @@ int pf_helper(const char *fmt, p_t funcarr[], va_list args)
 }
 
 /**
-*
-*
-*
+* _printf - produces output according to a format
+* @fmt: specifier
+* Return: character count
 */
+
 int _printf(const char * format, ...)
 {
 	int counter = 0;
