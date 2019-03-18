@@ -14,6 +14,9 @@ int _printf(char *fmt, ...)
 	int counter = 0;
 /*	void (*pfunc)(va_list);*/
 
+	if (!fmt || (fmt[0] == '%' && fmt[1] == '\0'))
+		return (-1);
+
 	p_t funcarr[] = {
 		{'i', print_int},
 		{'d', print_int},
@@ -21,7 +24,8 @@ int _printf(char *fmt, ...)
 		{'c', print_char},
 		{'x', print_hex},
 		{'b', print_binary},
-		{'%', print_char}
+		{'%', print_char},
+		{'\0', NULL}
 	};
 	va_start(args, fmt);
 	if (fmt == NULL)
@@ -36,7 +40,16 @@ int _printf(char *fmt, ...)
 			{
 				if (sval[i] == funcarr[j].c)
 				{
+					
 					counter += funcarr[j].f(args);
+				}
+				if (funcarr[j].c == 0)
+				{
+					if (!fmt[i])
+						break;
+					_putchar('%');
+					_putchar(fmt[i]);
+					counter += 2;
 				}
 			}
 		}
