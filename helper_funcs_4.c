@@ -14,7 +14,7 @@ int print_string(va_list sval)
 
 	arg = va_arg(sval, char *);
 	if (!arg)
-		s = "(null)";
+		arg = "(null)";
 	for (i = 0; arg[i] != '\0'; i++)
 	{
 		_putchar(arg[i]);
