@@ -19,8 +19,12 @@ int print_number(int i)
 	else
 		abs = i;
 	if (abs / 10)
+	{
 		print_number(abs / 10);
-	num += _putchar(abs % 10 + '0');
+		num++;
+	}
+	_putchar(abs % 10 + '0');
+	num++;
 	return (num);
 }
 
@@ -86,7 +90,6 @@ int print_string(va_list sval)
 		_putchar(arg[i]);
 		counter++;
 	}
-	counter--;
 	return (counter);
 }
 
