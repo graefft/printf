@@ -5,6 +5,7 @@
  * @i: integer
  * Return: number to print
  */
+<<<<<<< HEAD
 
 int print_number(int i)
 {
@@ -31,65 +32,99 @@ int print_number(int i)
 *
 * Return: number of digits printed
 */
+=======
+>>>>>>> master
+
+void print_number(int i)
+{
+<<<<<<< HEAD
+	int i = va_arg(dval, int);
+	
+	return (print_number(i));
+=======
+	unsigned int abs;
+
+	if (i < 0)
+	{
+		_putchar('-');
+		abs = -i;
+	}
+	else
+		abs = i;
+	if (abs / 10)
+	{
+		print_number(abs / 10);
+	}
+	_putchar(abs % 10 + '0');
+>>>>>>> master
+}
+
+
+/**
+* print_int - print number(s)
+* @dval: passed in number value
+*
+* Return: number of digits printed
+*/
 
 int print_int(va_list dval)
 {
 	int i = va_arg(dval, int);
-	
-	return (print_number(i));
-}
-
-/**
-* print_string - print all chars in a string
-* @sval: passed in string
-*
-* Return: number of chars printed
-*/
-
-int print_string(va_list sval)
-{
-	int i;
-	char *arg;
 	int counter = 0;
 
-	arg = va_arg(sval, char *);
-	for (i = 0; arg[i] != '\0'; i++)
-	{
-		_putchar(arg[i]);
+	counter = countnum(i);
+
+	if (i <= 0)
 		counter++;
-	}
-	counter--;
+
+	print_number(i);
+
 	return (counter);
 }
 
 /**
-* print_char - print single character
-* @c: passed in char
-*
-* Return: 1
-*/
+ * countnum - counts number of characters
+ * @i: integer to count
+ *
+ * Return: count
+ */
 
-int print_char(va_list c)
+int countnum(int i)
 {
-	char arg;
+	unsigned int counter = 0;
+	unsigned int abs;
 
-	arg = va_arg(c, int);
-	_putchar(arg);
-
-	return (1);
+	if (i < 0)
+		abs = -i;
+	else
+		abs = i;
+	while (abs)
+	{
+		counter++;
+		abs = abs / 10;
+	}
+	return (counter);
 }
 
 /**
-* print_perc - print percent
-* @c: percent character
-*
-* Return: 1
-*/
+ * print_un - prints unsigned integer
+ * @dval: value to print
+ *
+ * Return: count
+ */
 
-int print_perc(va_list c)
+int print_un(va_list dval)
 {
-	(void)c;
+	int i = va_arg(dval, int);
+	int counter = 0;
 
-	_putchar('%');
-	return (1);
+	counter = countnum(i);
+
+	if (i <= 0)
+		counter++;
+
+	print_number(i);
+	if (counter < 0)
+		counter *= -counter;
+	return (counter);
 }

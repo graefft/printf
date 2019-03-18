@@ -3,7 +3,7 @@
 /**
 * pf_helper - main algorithm for printf
 * @fmt: format string
-* @funcarr: array of structs to compare and exe according to specifier
+* @funcarr: array of structs to compare according to specifier
 * @args: va_list argument
 *
 * Return: counter on success, -1 if failure
@@ -13,11 +13,9 @@ int pf_helper(const char *fmt, p_t funcarr[], va_list args)
 {
 	int i = 0, j = 0, flag = 0, temp = 0;
 	int counter = 0;
-/*	void (*pfunc)(va_list);*/
 
 	if (!fmt || (fmt[0] == '%' && fmt[1] == '\0'))
 		return (-1);
-
 	while (fmt[i])
 	{
 		for (; fmt[i] != '%'; i++, counter++)
@@ -33,23 +31,21 @@ int pf_helper(const char *fmt, p_t funcarr[], va_list args)
 			break;
 		i++;
 		for (j = 0; funcarr[j].c; j++)
-		{
 			if (fmt[i] == funcarr[j].c)
 			{
 				temp = funcarr[j].f(args);
-				if (temp == -1)
+				if (temp == 0)
 					return (-1);
 				counter += temp;
 				break;
 			}
-			if (funcarr[j].c == 0)
-			{
-				if (!fmt[i])
-					break;
-				_putchar('%');
-				_putchar(fmt[i]);
-				counter += 2;
-			}
+		if (funcarr[j].c == 0)
+		{
+			if (!fmt[i])
+				break;
+			_putchar('%');
+			_putchar(fmt[i]);
+			counter += 2;
 		}
 		i++;
 	}
@@ -58,15 +54,16 @@ int pf_helper(const char *fmt, p_t funcarr[], va_list args)
 
 /**
 * _printf - produces output according to a format
-* @fmt: specifier
+* @format: specifier
 * Return: character count
 */
 
-int _printf(const char * format, ...)
+int _printf(const char *format, ...)
 {
 	int counter = 0;
 	va_list args;
 	p_t funcarr[] = {
+<<<<<<< HEAD
                 {'i', print_int},
                 {'d', print_int},
                 {'s', print_string},
@@ -77,6 +74,22 @@ int _printf(const char * format, ...)
 		{'r', print_rev},
 		{'R', print_rot13},
                 {0, NULL}
+=======
+		{'i', print_int},
+		{'d', print_int},
+		{'s', print_string},
+		{'c', print_char},
+		{'x', print_hex},
+		{'b', print_binary},
+		{'r', print_rev},
+		{'R', print_rot13},
+		{'u', print_un},
+		{'%', print_perc},
+		{'r', print_rev},
+		{'R', print_rot13},
+		{'u', print_un},
+		{0, NULL}
+>>>>>>> master
 	};
 	va_start(args, format);
 
