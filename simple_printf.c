@@ -34,7 +34,7 @@ int pf_helper(const char *fmt, p_t funcarr[], va_list args)
 			if (fmt[i] == funcarr[j].c)
 			{
 				temp = funcarr[j].f(args);
-				if (temp == -1)
+				if (temp == 0)
 					return (-1);
 				counter += temp;
 				break;

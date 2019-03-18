@@ -18,12 +18,13 @@ typedef struct printer
 	int (*f)(va_list ap);
 } p_t;
 
+int countnum(int i);
 int _putchar(char c);
 void tusBasicTester(void);
 int pf_helper(const char *fmt, p_t funcarr[], va_list args);
 int _printf(const char *fmt, ...);
 void (*print_array(char s))();
-int print_number(int i);
+void print_number(int i);
 int print_int(va_list dval);
 int print_string(va_list sval);
 int print_char(va_list c);

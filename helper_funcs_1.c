@@ -6,10 +6,9 @@
  * Return: number to print
  */
 
-int print_number(int i)
+void print_number(int i)
 {
 	unsigned int abs;
-	int num = 0;
 
 	if (i < 0)
 	{
@@ -21,11 +20,8 @@ int print_number(int i)
 	if (abs / 10)
 	{
 		print_number(abs / 10);
-		num++;
 	}
 	_putchar(abs % 10 + '0');
-	num++;
-	return (num);
 }
 
 
@@ -39,61 +35,31 @@ int print_number(int i)
 int print_int(va_list dval)
 {
 	int i = va_arg(dval, int);
-
-	return (print_number(i));
-}
-
-
-/**
-* print_string - print all chars in a string
-* @sval: passed in string
-*
-* Return: number of chars printed
-*/
-
-int print_string(va_list sval)
-{
-	int i;
-	char *arg;
 	int counter = 0;
 
-	arg = va_arg(sval, char *);
-	for (i = 0; arg[i] != '\0'; i++)
-	{
-		_putchar(arg[i]);
+	counter = countnum(i);
+
+	if (i <= 0)
 		counter++;
-	}
+
+	print_number(i);
+
 	return (counter);
 }
 
-/**
-* print_char - print single character
-* @c: passed in char
-*
-* Return: 1
-*/
-
-int print_char(va_list c)
+int countnum(int i)
 {
-	char arg;
+	unsigned int counter = 0;
+	unsigned int abs;
 
-	arg = va_arg(c, int);
-	_putchar(arg);
-
-	return (1);
-}
-
-/**
-* print_perc - print percent
-* @c: percent character
-*
-* Return: 1
-*/
-
-int print_perc(va_list c)
-{
-	(void)c;
-
-	_putchar('%');
-	return (1);
+	if (i < 0)
+		abs = -i;
+	else
+		abs = i;
+	while (abs)
+	{
+		counter++;
+		abs = abs / 10;
+	}
+	return (counter);
 }
