@@ -47,6 +47,13 @@ int print_int(va_list dval)
 	return (counter);
 }
 
+/**
+ * countnum - counts number of characters
+ * @i: integer to count
+ *
+ * Return: count
+ */
+
 int countnum(int i)
 {
 	unsigned int counter = 0;
@@ -61,5 +68,28 @@ int countnum(int i)
 		counter++;
 		abs = abs / 10;
 	}
+	return (counter);
+}
+
+/**
+ * print_un - prints unsigned integer
+ * @dval: value to print
+ *
+ * Return: count
+ */
+
+int print_un(va_list dval)
+{
+	int i = va_arg(dval, int);
+	int counter = 0;
+
+	counter = countnum(i);
+
+	if (i <= 0)
+		counter++;
+
+	print_number(i);
+	if (counter < 0)
+		counter *= -counter;
 	return (counter);
 }
