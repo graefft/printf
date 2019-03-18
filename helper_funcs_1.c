@@ -9,7 +9,7 @@
 int print_number(int i)
 {
 	unsigned int abs;
-	int num;
+	int num = 0;
 
 	if (i < 0)
 	{
