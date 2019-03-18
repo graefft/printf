@@ -17,7 +17,7 @@ int _strlen(char *s)
 
 /**
  * print_rev - prints string in reverse
- * @sval - string to print
+ * @sval: string to print
  * Return: count
  */
 
