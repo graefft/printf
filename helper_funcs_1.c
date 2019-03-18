@@ -1,6 +1,31 @@
 #include "holberton.h"
 
 /**
+ * print_number - gets num for print_int
+ * @i: integer
+ * Return: number to print
+ */
+
+int print_number(int i)
+{
+	unsigned int abs;
+	int num;
+
+	if (i < 0)
+	{
+		_putchar('-');
+		abs = -i;
+	}
+	else
+		abs = i;
+	if (abs / 10)
+		print_number(abs / 10);
+	num += _putchar(abs % 10 + '0');
+	return (num);
+}
+
+
+/**
 * print_int - print number(s)
 * @dval: passed in number value
 *
@@ -9,31 +34,9 @@
 
 int print_int(va_list dval)
 {
-	int exp, temp;
-	int arg;
-	int counter = 0;
-
-	arg = va_arg(dval, int);
-	if (arg == 0)
-		_putchar('0');
-	if (arg < 0)
-	{
-		_putchar('-');
-		counter++;
-		arg = arg * -1;
-	}
-	for (exp = 1; arg / exp != 0; exp = exp * 10)
-		;
-	while (arg != 0)
-	{
-		exp = exp / 10;
-		temp = arg / exp;
-		_putchar(temp + '0');
-		arg = arg % exp;
-		counter++;
-	}
-	counter--;
-	return (counter);
+	int i = va_arg(dval, int);
+	
+	return (print_number(i));
 }
 
 /**
