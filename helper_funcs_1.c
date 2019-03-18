@@ -22,7 +22,11 @@ int print_int(va_list dval)
 		counter++;
 		arg = arg * -1;
 	}
+<<<<<<< HEAD
 	for (exp = 1; arg / exponent != 0; exponent = exponent * 10)
+=======
+	for (exp = 1; arg / exp != 0; exp = exp * 10)
+>>>>>>> abcfe3225958eeb5a4ba8e5082c2bd3f0c2971d3
 		;
 	while (arg != 0)
 	{
