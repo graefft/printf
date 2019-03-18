@@ -75,6 +75,7 @@ int _printf(const char * format, ...)
                 {'b', print_binary},
                 {'%', print_perc},
 		{'r', print_rev},
+		{'R', print_rot13},
                 {0, NULL}
 	};
 	va_start(args, format);

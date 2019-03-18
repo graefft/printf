@@ -30,6 +30,7 @@ int print_binary(va_list dval);
 int print_hex(va_list dval);
 int print_perc(va_list c);
 int print_rev(va_list sval);
+int print_rot13(va_list sval);
 int _strlen(char *s);
 
 #endif
