@@ -22,12 +22,12 @@ int print_int(va_list dval)
 		counter++;
 		arg = arg * -1;
 	}
-	for (exp = 1; arg/exp != 0; exp = exp * 10)
+	for (exp = 1; arg / exp != 0; exp = exp * 10)
 		;
 	while (arg != 0)
 	{
 		exp = exp / 10;
-		temp = arg/exp;
+		temp = arg / exp;
 		_putchar(temp + '0');
 		arg = arg % exp;
 		counter++;
