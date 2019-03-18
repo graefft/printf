@@ -34,12 +34,11 @@ int print_number(int i)
 
 int print_int(va_list dval)
 {
-<<<<<<< HEAD
 	int i = va_arg(dval, int);
 	
 	return (print_number(i));
-=======
-	int exponent, temp;
+}
+/*	int exponent, temp;
 	int arg;
 	int counter = 0;
 
@@ -64,8 +63,9 @@ int print_int(va_list dval)
 	}
 	counter--;
 	return (counter);
->>>>>>> 0d6ef17ffc873fcd7811e58a8990711f01df2ab2
 }
+*/
+
 
 /**
 * print_string - print all chars in a string
