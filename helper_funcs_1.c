@@ -1,9 +1,10 @@
 #include "holberton.h"
 
 /**
+* print_int - print number(s)
+* @dval: passed in number value
 *
-*
-*
+* Return: number of digits printed
 */
 
 int print_int(va_list dval)
@@ -21,12 +22,12 @@ int print_int(va_list dval)
 		counter++;
 		arg = arg * -1;
 	}
-	for (exp = 1; arg/exp != 0; exp = exp * 10)
+	for (exp = 1; arg / exp != 0; exp = exp * 10)
 		;
 	while (arg != 0)
 	{
 		exp = exp / 10;
-		temp = arg/exp;
+		temp = arg / exp;
 		_putchar(temp + '0');
 		arg = arg % exp;
 		counter++;
@@ -36,9 +37,10 @@ int print_int(va_list dval)
 }
 
 /**
+* print_string - print all chars in a string
+* @sval: passed in string
 *
-*
-*
+* Return: number of chars printed
 */
 
 int print_string(va_list sval)
@@ -58,9 +60,10 @@ int print_string(va_list sval)
 }
 
 /**
+* print_char - print single character
+* @c: passed in char
 *
-*
-*
+* Return: 1
 */
 
 int print_char(va_list c)
@@ -74,9 +77,10 @@ int print_char(va_list c)
 }
 
 /**
+* print_perc - print percent
+* @c: percent character
 *
-*
-*
+* Return: 1
 */
 
 int print_perc(va_list c)

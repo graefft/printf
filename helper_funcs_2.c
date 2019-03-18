@@ -1,25 +1,28 @@
 #include "holberton.h"
 
 /**
+* print_binary - print passed in number in base 2
+* @dval: passed in number
 *
-*
-*
-*
+* Return: counter
 */
 
 int print_binary(va_list dval)
 {
         int exponent = 0;
         int arg;
+	int counter = 0;
 
         arg = va_arg(dval, int);
         if (arg == 0)
         {
                 _putchar('0');
+		counter++;
         }
         if (arg < 0)
         {
                 _putchar('-');
+		counter++;
         }
         for (exponent = 1; arg/exponent != 0; exponent = exponent * 2)
                 ;
@@ -30,19 +33,22 @@ int print_binary(va_list dval)
                 {
                         arg = arg - exponent;
                         _putchar('1');
+			counter++;
                 }
                 else
                 {
                         _putchar('0');
+			counter++;
                 }
         }
-        return (0);
+        return (counter);
 }
 
 /**
+* print_hex - print number in base 16
+* @dval: passed in number
 *
-*
-*
+* Return: counter
 */
 
 int print_hex(va_list dval)
