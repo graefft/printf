@@ -69,6 +69,9 @@ int _printf(const char *format, ...)
 		{'c', print_char},
 		{'x', print_hex},
 		{'b', print_binary},
+		{'r', print_rev},
+		{'R', print_rot13},
+		{'u', print_un},
 		{'%', print_perc},
 		{0, NULL}
 	};
