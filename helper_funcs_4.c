@@ -13,6 +13,8 @@ int print_string(va_list sval)
 	int counter = 0;
 
 	arg = va_arg(sval, char *);
+	if (!arg)
+		s = "(null)";
 	for (i = 0; arg[i] != '\0'; i++)
 	{
 		_putchar(arg[i]);
