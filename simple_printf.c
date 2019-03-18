@@ -74,6 +74,7 @@ int _printf(const char * format, ...)
                 {'x', print_hex},
                 {'b', print_binary},
                 {'%', print_perc},
+		{'r', print_rev},
                 {0, NULL}
 	};
 	va_start(args, format);
