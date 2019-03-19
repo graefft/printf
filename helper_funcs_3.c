@@ -84,7 +84,7 @@ int print_strstr(va_list sval)
 
 	s = va_arg(sval, char *);
 	if (s == NULL)
-		s = "(null)";
+		s = "(nil)";
 
 	for (i = 0; s[i] != '\0'; i++)
 	{
