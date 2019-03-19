@@ -9,9 +9,9 @@
 
 int print_binary(va_list dval)
 {
-	int exponent = 0;
-	int arg;
-	int counter = 0;
+	long int exponent = 0;
+	long int arg;
+	long int counter = 0;
 
 	arg = va_arg(dval, int);
 	if (arg == 0)
