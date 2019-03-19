@@ -72,6 +72,11 @@ int print_hex_lower(va_list dval)
 	unsigned int count = 0, i;
 
 	arg = va_arg(dval, int);
+	if (arg == 0)
+	{
+		_putchar('0');
+		count++;
+	}
 
 	d = convert(arg, 16, 1);
 
@@ -97,6 +102,12 @@ int print_hex_upper(va_list dval)
 	unsigned int count = 0, i;
 
 	arg = va_arg(dval, int);
+
+	if (arg == 0)
+        {
+                _putchar('0');
+                count++;
+        }
 
 	d = convert(arg, 16, 0);
 
