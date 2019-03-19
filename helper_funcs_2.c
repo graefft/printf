@@ -9,18 +9,35 @@
 
 int print_binary(va_list dval)
 {
-	char *b;
-	unsigned int arg;
-	int count = 0;
+	int exponent = 0;
+        int arg;
 
-	arg = va_arg(dval, int);
-
-	b = convert(arg, 2, 0);
-
-	count += _puts(b);
-	return (count - 14);
+        arg = va_arg(dval, int);
+        if (arg == 0)
+        {
+                putchar('0');
+        }
+        if (arg < 0)
+        {
+                putchar('-');
+        }
+        for (exponent = 1; arg/exponent != 0; exponent = exponent * 2)
+                ;
+        while (exponent > 1)
+        {
+                exponent = exponent / 2;
+                if (arg / exponent > 0)
+                {
+                        arg = arg - exponent;
+                        putchar('1');
+                }
+                else
+                {
+                        putchar('0');
+                }
+        }
+        return (0);
 }
-
 /**
  * print_octal - prints number in base 8
  * @dval: number to print
