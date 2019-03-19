@@ -10,18 +10,13 @@
 int print_binary(va_list dval)
 {
 	long int exponent = 0;
-	long int arg;
+	unsigned int arg;
 	long int count = 0;
 
 	arg = va_arg(dval, int);
 	if (arg == 0)
 	{
 		_putchar('0');
-		count++;
-	}
-	if (arg < 0)
-	{
-		_putchar('-');
 		count++;
 	}
 	for (exponent = 1; arg / exponent != 0; exponent = exponent * 2)
@@ -74,12 +69,18 @@ int print_hex_lower(va_list dval)
 {
 	char *d;
 	unsigned int arg;
+	unsigned int count = 0, i;
 
 	arg = va_arg(dval, int);
 
 	d = convert(arg, 16, 1);
 
-	return (_puts(d));
+	_puts(d);
+
+	for (i = 0; d[i]; i++)
+		count++;
+
+	return (count);
 }
 
 /**
@@ -93,10 +94,16 @@ int print_hex_upper(va_list dval)
 {
 	char *d;
 	unsigned int arg;
+	unsigned int count = 0, i;
 
 	arg = va_arg(dval, int);
 
 	d = convert(arg, 16, 0);
 
-	return (_puts(d));
+	_puts(d);
+
+	for (i = 0; d[i]; i++)
+		count++;
+
+	return (count);
 }
