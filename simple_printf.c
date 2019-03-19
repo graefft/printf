@@ -20,17 +20,17 @@ int pf_helper(const char *fmt, p_t funcarr[], va_list args)
 	{
 		if (fmt[i] != '%')
 		{
-/*			if (!fmt[i])
+			if (!fmt[i])
 			{
 				flag = 1;
 				break;
-			}*/
+			}
 			counter += _putchar(fmt[i]);
 			continue;
 		}
-/*		if (flag)
+		if (flag)
 			break;
-*/		
+
 		for (j = 0; funcarr[j].c; j++)
 		{
 			if (fmt[i + 1] == *funcarr[j].c)

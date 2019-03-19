@@ -82,7 +82,7 @@ int print_un(va_list dval)
 {
 	unsigned int ui = va_arg(dval, unsigned int);
 	int counter = 0;
-	unsigned int i, j, k, l;
+	unsigned int i, j, l;
 	unsigned int a[10];
 
 	j = 1000000000;

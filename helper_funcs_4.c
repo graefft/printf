@@ -8,16 +8,11 @@
 
 int print_string(va_list sval)
 {
-	int i;
 	char *arg;
 
 	arg = va_arg(sval, char *);
 	if (!arg)
 		arg = "(null)";
-/*	for (i = 0; arg[i] != '\0'; i++)
-	{
-		_putchar(arg[i]);
-	}*/
 	return (_puts(arg));
 }
 

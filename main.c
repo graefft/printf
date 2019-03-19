@@ -124,7 +124,7 @@ int main(void)
 	printf("=====================\n");
 	unsigned int uelen = 0;
 	unsigned int ualen = 0;
-	unsigned int m = 113342421;
+/*	unsigned int m = 113342421; */
 	z = 0;
 	elen = printf("Expected   : %u\n", p);
 	alen = _printf("Actual     : %u\n", p);

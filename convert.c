@@ -1,16 +1,19 @@
 #include "holberton.h"
 
 /**
- * convert - itoa
+ * convert - itoa replica
+ * @num: number to convert
+ * @base: base to convert to
+ * @lower: flag for lowercase
  *
+ * Return: count
  */
 
-char* convert(unsigned long num, int base, int lower)
+char *convert(unsigned long num, int base, int lower)
 {
 	static char buf[32];
 	char *p;
 	char *a;
-	int i;
 
 	a = lower ? "0123456789abcdef" : "0123456789ABCDEF";
 

@@ -69,8 +69,10 @@ int print_rot13(va_list sval)
 }
 
 /**
+ * print_strstr - prints S specifier
+ * @sval: string to print
  *
- *
+ * Return: count
  */
 
 int print_strstr(va_list sval)
@@ -80,12 +82,13 @@ int print_strstr(va_list sval)
 	char *hex;
 	char *s;
 
+	s = va_arg(sval, char *);
 	if (s == NULL)
 		s = "(null)";
 
 	for (i = 0; s[i] != '\0'; i++)
 	{
-		if (s[i] > 0 && s[i] < 32 || s[i] >= 127)
+		if ((s[i] > 0 && s[i] < 32) || s[i] >= 127)
 		{
 			_putchar('\\');
 			_putchar('x');
