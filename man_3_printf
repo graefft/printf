@@ -115,13 +115,6 @@ A sign (+ or \-) should always be placed before a number produced by a signed
 conversion.
 By default a sign is used only for negative numbers.
 
-.SS The field width
-An optional decimal digit string (with nonzero first digit) specifying
-a minimum field width.
-If the converted value has fewer characters
-than the field width, it will be padded with spaces on the left
-(or right, if the left-adjustment flag has been given).
-
 .SS The length modifier
 Here, "integer conversion" stands for
 .BR d ,
