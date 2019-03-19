@@ -9,17 +9,20 @@
 
 int print_binary(va_list dval)
 {
-	int exponent = 0;
-	int arg;
+	long int exponent = 0;
+	long int arg;
+	long int count = 0;
 
 	arg = va_arg(dval, int);
 	if (arg == 0)
 	{
-		putchar('0');
+		_putchar('0');
+		count++;
 	}
 	if (arg < 0)
 	{
-		putchar('-');
+		_putchar('-');
+		count++;
 	}
 	for (exponent = 1; arg / exponent != 0; exponent = exponent * 2)
 		;
@@ -29,14 +32,16 @@ int print_binary(va_list dval)
 		if (arg / exponent > 0)
 		{
 			arg = arg - exponent;
-			putchar('1');
+			_putchar('1');
+			count++;
 		}
 		else
 		{
-			putchar('0');
+			_putchar('0');
+			count++;
 		}
 	}
-	return (0);
+	return (count);
 }
 
 /**
