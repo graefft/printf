@@ -64,6 +64,9 @@ int print_rot13(va_list sval)
 				break;
 			}
 		}
+/*		if (s[i] != change[j])
+			_putchar(s[i]);
+*/
 	}
 	return (count);
 }
