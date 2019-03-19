@@ -16,38 +16,36 @@ int pf_helper(const char *fmt, p_t funcarr[], va_list args)
 
 	if (!fmt || (fmt[0] == '%' && fmt[1] == '\0'))
 		return (-1);
-	while (fmt[i])
+	for (i = 0; fmt && fmt[i]; i++)
 	{
-		for (; fmt[i] != '%'; i++, counter++)
+		if (fmt[i] != '%')
 		{
 			if (!fmt[i])
 			{
 				flag = 1;
 				break;
 			}
-			_putchar(fmt[i]);
+			counter += _putchar(fmt[i]);
+			continue;
 		}
 		if (flag)
 			break;
-		i++;
+
 		for (j = 0; funcarr[j].c; j++)
-			if (fmt[i] == funcarr[j].c)
+		{
+			if (fmt[i + 1] == *funcarr[j].c)
 			{
 				temp = funcarr[j].f(args);
-				if (temp == 0)
-					return (-1);
 				counter += temp;
 				break;
 			}
-		if (funcarr[j].c == 0)
-		{
-			if (!fmt[i])
-				break;
-			_putchar('%');
-			_putchar(fmt[i]);
-			counter += 2;
 		}
 		i++;
+		if (funcarr[j].c == 0)
+		{
+			counter += _putchar('%');
+			counter += _putchar(fmt[i]);
+		}
 	}
 	return (counter);
 }
@@ -61,23 +59,24 @@ int pf_helper(const char *fmt, p_t funcarr[], va_list args)
 int _printf(const char *format, ...)
 {
 	int counter = 0;
-	va_list args;
 	p_t funcarr[] = {
-		{'i', print_int},
-		{'d', print_int},
-		{'s', print_string},
-		{'c', print_char},
-		{'x', print_hex},
-		{'b', print_binary},
-		{'r', print_rev},
-		{'R', print_rot13},
-		{'u', print_un},
-		{'%', print_perc},
-		{'r', print_rev},
-		{'R', print_rot13},
-		{'u', print_un},
+		{"i", print_int},
+		{"d", print_int},
+		{"s", print_string},
+		{"c", print_char},
+		{"x", print_hex_lower},
+		{"X", print_hex_upper},
+		{"b", print_binary},
+		{"o", print_octal},
+		{"r", print_rev},
+		{"R", print_rot13},
+		{"%", print_perc},
+		{"S", print_strstr},
+		{"u", print_un},
 		{0, NULL}
 	};
+	va_list args;
+
 	va_start(args, format);
 
 	counter = pf_helper(format, funcarr, args);

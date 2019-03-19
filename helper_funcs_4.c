@@ -8,19 +8,12 @@
 
 int print_string(va_list sval)
 {
-	int i;
 	char *arg;
-	int counter = 0;
 
 	arg = va_arg(sval, char *);
 	if (!arg)
 		arg = "(null)";
-	for (i = 0; arg[i] != '\0'; i++)
-	{
-		_putchar(arg[i]);
-		counter++;
-	}
-	return (counter);
+	return (_puts(arg));
 }
 
 /**
