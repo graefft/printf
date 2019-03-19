@@ -94,6 +94,7 @@ int print_strstr(va_list sval)
 		{
 			_putchar('\\');
 			_putchar('x');
+			count += 2;
 			hex = convert(s[i], 16, 0);
 			if (s[i] <= 15)
 				count += _putchar('0');
