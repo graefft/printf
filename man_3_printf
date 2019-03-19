@@ -6,15 +6,15 @@ _printf \- formatted output conversion.
 .sp
 .BI "_printf(const char * " format ", ...);"
 .SH DESCRIPTION
-The function 
+The function
 .BR _printf ()
-produces output according to a 
+produces output according to a
 .I format
-as described below. The function writes output to 
-.IR stdout , 
+as described below. The function writes output to
+.IR stdout ,
 the standard output stream.
 .PP
-This function writes output under the control of a 
+This function writes output under the control of a
 .I format
 string that specifies how subsequent arguments (or arguments accessed via
 the variable-length argument facilities of
@@ -74,7 +74,7 @@ For
 .BR u ,
 .BR x ,
 and
-.BR X 
+.BR X
 conversions, the converted value is padded on the left with zeros rather
 than blanks.
 If the
