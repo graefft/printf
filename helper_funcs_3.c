@@ -95,7 +95,7 @@ int print_strstr(va_list sval)
 			_putchar('\\');
 			_putchar('x');
 			hex = convert(s[i], 16, 0);
-			if (!hex[1])
+			/*if (!hex)*/
 				count += _putchar('0');
 			count += _puts(hex);
 		}
