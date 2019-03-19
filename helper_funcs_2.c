@@ -45,6 +45,25 @@ int print_binary(va_list dval)
 }
 
 /**
+ * print_octal - prints number in base 8
+ * @dval: number to print
+ *
+ * Return: count
+ */
+
+int print_octal(va_list dval)
+{
+	char *o;
+	unsigned int arg;
+
+	arg = va_arg(dval, int);
+
+	o = convert(arg, 8, 0);
+
+	return (_puts(o));
+}
+
+/**
 * print_hex_lower - print number in base 16
 * @dval: passed in number
 *
