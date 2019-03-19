@@ -122,27 +122,6 @@ If the converted value has fewer characters
 than the field width, it will be padded with spaces on the left
 (or right, if the left-adjustment flag has been given).
 
-.SS The precision
-An optional precision, in the form of a period (\(aq.\(aq)  followed by an
-optional decimal digit string.
-Instead of a decimal digit string one may write "*" or "*m$"
-(for some decimal integer m) to specify that the precision
-is given in the next argument, or in the m-th argument, respectively,
-which must be of type
-.IR int .
-If the precision is given as just \(aq.\(aq, the precision is taken to
-be zero.
-A negative precision is taken as if the precision were omitted.
-This gives the minimum number of digits to appear for
-.BR d ,
-.BR i ,
-.BR o ,
-.BR u ,
-.BR x ,
-and
-.B X
-conversions.
-
 .SS The length modifier
 Here, "integer conversion" stands for
 .BR d ,
