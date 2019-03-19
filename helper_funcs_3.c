@@ -51,6 +51,7 @@ int print_rot13(va_list sval)
 	char rot[] = "nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM";
 
 	s = va_arg(sval, char *);
+	count = _strlen(s);
 	if (s == NULL)
 		s = "(nil)";
 	for (i = 0; s[i] != '\0'; i++)
@@ -60,7 +61,6 @@ int print_rot13(va_list sval)
 			if (s[i] == change[j])
 			{
 				_putchar(rot[j]);
-				count++;
 				break;
 			}
 		}
