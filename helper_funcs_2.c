@@ -45,15 +45,44 @@ int print_binary(va_list dval)
 }
 
 /**
-* print_hex - print number in base 16
+* print_hex_lower - print number in base 16
 * @dval: passed in number
 *
 * Return: counter
 */
 
-int print_hex(va_list dval)
+int print_hex_lower(va_list dval)
 {
-	int capoffset;
+	char *d;
+	unsigned int arg;
+
+	arg = va_arg(dval, int);
+
+	d = convert(arg, 16, 1);
+
+	return (_puts(d));
+}
+
+/**
+ * print_hex_upper - print number in base 16
+ * @dval: passed in number
+ *
+ * Return: count
+ */
+
+int print_hex_upper(va_list dval)
+{
+	char *d;
+	unsigned int arg;
+
+	arg = va_arg(dval, int);
+
+	d = convert(arg, 16, 0);
+
+	return (_puts(d));
+}
+
+/*	int capoffset;
 	int rem;
 	int arg;
 	int counter = 0;
@@ -91,4 +120,5 @@ int print_hex(va_list dval)
 		arg = arg / 16;
 	}
 	return (counter);
-}
+*/
+
