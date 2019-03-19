@@ -14,12 +14,14 @@
  */
 typedef struct printer
 {
-	char c;
+	char *c;
 	int (*f)(va_list ap);
 } p_t;
 
+char *convert(unsigned long num, int base, int lower);
 int countnum(int i);
 int _putchar(char c);
+int _puts(char *s);
 void tusBasicTester(void);
 int pf_helper(const char *fmt, p_t funcarr[], va_list args);
 int _printf(const char *fmt, ...);
@@ -34,6 +36,7 @@ int print_perc(va_list c);
 int print_un(va_list dval);
 int print_rev(va_list sval);
 int print_rot13(va_list sval);
+int print_strstr(va_list sval);
 int _strlen(char *s);
 
 #endif

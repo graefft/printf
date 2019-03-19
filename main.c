@@ -53,7 +53,8 @@ int main(void)
 	_printf("Actual     : %sschool\n", "holberton");
 	printf("Expected   : notrebloh\n");
 	_printf("Actual     : %r\n", "holberton");
-
+/*	printf("Expected   : Holberton\\x0ASchool");
+	_printf("Actual     : %S\n", "Holberton\nSchool");*/
 
 	//%%
 	alen = elen = 0;
@@ -145,7 +146,7 @@ int main(void)
 	_printf("Actual     : %b\n", 157);
 	_printf("Actual     : %b\n", INT_MAX);
 	_printf("Actual     : %b\n", INT_MIN);
-
+	_printf("Actual     : %b\n", z);
 
     len = _printf("Let's try to printf a simple sentence.\n");
     len2 = printf("Let's try to printf a simple sentence.\n");

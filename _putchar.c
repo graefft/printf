@@ -10,3 +10,18 @@ int _putchar(char c)
 {
 	return (write(1, &c, 1));
 }
+
+/**
+ * _puts - writes a string to stdout
+ * @s: pointer to string to print
+ * Return: number of chars
+ */
+
+int _puts(char *s)
+{
+	int i;
+
+	for (i = 0; s[i] != '\0'; i++)
+		_putchar(s[i]);
+	return (i);
+}

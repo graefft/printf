@@ -80,16 +80,28 @@ int countnum(int i)
 
 int print_un(va_list dval)
 {
-	int i = va_arg(dval, int);
+	unsigned int ui = va_arg(dval, unsigned int);
 	int counter = 0;
+	unsigned int i, j, k, l;
+	unsigned int a[10];
 
-	counter = countnum(i);
+	j = 1000000000;
+	a[0] = ui / j;
 
-	if (i <= 0)
-		counter++;
+	for (i = 1; i < 10; i++)
+	{
+		j /= 10;
+		a[i] = (ui / j) % 10;
+	}
 
-	print_number(i);
-	if (counter < 0)
-		counter *= -counter;
+	for (i = 0, l = 0, counter = 0; i < 10; i++)
+	{
+		l += a[i];
+		if (l || i == 9)
+		{
+			_putchar(a[i] + '0');
+			counter++;
+		}
+	}
 	return (counter);
 }

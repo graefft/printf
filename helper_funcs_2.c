@@ -78,9 +78,9 @@ int print_hex(va_list dval)
 	{
 		rem = arg % 16;
 
-		if (rem >= 10)
+		if (rem < 10)
 		{
-			_putchar(capoffset + (rem - 10));
+			_putchar(capoffset + rem);
 			counter++;
 		}
 		else

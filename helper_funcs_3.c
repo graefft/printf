@@ -67,3 +67,35 @@ int print_rot13(va_list sval)
 	}
 	return (count);
 }
+
+/**
+ *
+ *
+ */
+
+int print_strstr(va_list sval)
+{
+	int i;
+	int count = 0;
+	char *hex;
+	char *s;
+
+	if (s == NULL)
+		s = "(null)";
+
+	for (i = 0; s[i] != '\0'; i++)
+	{
+		if (s[i] > 0 && s[i] < 32 || s[i] >= 127)
+		{
+			_putchar('\\');
+			_putchar('x');
+			hex = convert(s[i], 16, 0);
+			if (!hex[1])
+				count += _putchar('0');
+			count += _puts(hex);
+		}
+		else
+			count += _putchar(s[i]);
+	}
+	return (count);
+}
