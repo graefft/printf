@@ -9,39 +9,16 @@
 
 int print_binary(va_list dval)
 {
-	long int exponent = 0;
-	long int arg;
-	long int counter = 0;
+	char *b;
+	unsigned int arg;
+	int count = 0;
 
 	arg = va_arg(dval, int);
-	if (arg == 0)
-	{
-		_putchar('0');
-		counter++;
-	}
-	if (arg < 0)
-	{
-		_putchar('-');
-		counter++;
-	}
-	for (exponent = 1; arg / exponent != 0; exponent = exponent * 2)
-		;
-	while (exponent > 1)
-	{
-		exponent = exponent / 2;
-		if (arg / exponent > 0)
-		{
-			arg = arg - exponent;
-			_putchar('1');
-			counter++;
-		}
-		else
-		{
-			_putchar('0');
-			counter++;
-		}
-	}
-	return (counter);
+
+	b = convert(arg, 2, 0);
+
+	count += _puts(b);
+	return (count - 14);
 }
 
 /**
