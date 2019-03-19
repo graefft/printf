@@ -63,18 +63,6 @@ int _printf(const char *format, ...)
 	int counter = 0;
 	va_list args;
 	p_t funcarr[] = {
-<<<<<<< HEAD
-                {'i', print_int},
-                {'d', print_int},
-                {'s', print_string},
-                {'c', print_char},
-                {'x', print_hex},
-                {'b', print_binary},
-                {'%', print_perc},
-		{'r', print_rev},
-		{'R', print_rot13},
-                {0, NULL}
-=======
 		{'i', print_int},
 		{'d', print_int},
 		{'s', print_string},
@@ -89,7 +77,6 @@ int _printf(const char *format, ...)
 		{'R', print_rot13},
 		{'u', print_un},
 		{0, NULL}
->>>>>>> master
 	};
 	va_start(args, format);
 

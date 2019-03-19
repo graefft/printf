@@ -9,7 +9,6 @@
 
 int print_binary(va_list dval)
 {
-
 	long int exponent = 0;
 	long int arg;
 	long int counter = 0;
