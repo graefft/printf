@@ -13,7 +13,7 @@ char *convert(unsigned long num, int base, int lower)
 {
 	static char buf[32];
 	char *p;
-	char *a;
+	static char *a;
 
 	a = lower ? "0123456789abcdef" : "0123456789ABCDEF";
 
