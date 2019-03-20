@@ -62,10 +62,15 @@ int print_p(va_list sval)
 	int count = 0;
 	char *a;
 
-	a = convert(p, 16, 1);
-	count += _putchar('0');
-	count += _putchar('x');
-	count += _puts(a);
+	if (p == 0)
+		_puts("(nil)");
+	else
+	{
+		a = convert(p, 16, 1);
+		count += _putchar('0');
+		count += _putchar('x');
+		count += _puts(a);
+	}
 
 	return (count);
 }
