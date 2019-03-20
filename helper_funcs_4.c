@@ -62,7 +62,7 @@ int print_p(va_list sval)
 	int count = 0;
 	char *a;
 
-	if (p == 0)
+	if (!p)
 		return (_puts("(nil)"));
 	else
 	{
