@@ -58,18 +58,16 @@ int print_perc(va_list c)
 
 int print_p(va_list sval)
 {
+	char *a;
 	unsigned long int p = va_arg(sval, unsigned long int);
 	int count = 0;
-	char *a;
 
 	if (!p)
 		return (_puts("(nil)"));
-	else
-	{
-		a = convert(p, 16, 1);
-		count += _putchar('0');
-		count += _putchar('x');
-		count += _puts(a);
-	}
+
+	a = convert(p, 16, 1);
+	count += _puts("0x");
+	count += _puts(a);
+
 	return (count);
 }
