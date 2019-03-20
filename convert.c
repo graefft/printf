@@ -9,7 +9,7 @@
  * Return: count
  */
 
-char *convert(unsigned long num, int base, int lower)
+char *convert(unsigned long int num, int base, int lower)
 {
 	static char buf[50];
 	char *p;

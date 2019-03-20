@@ -104,10 +104,10 @@ int print_hex_upper(va_list dval)
 	arg = va_arg(dval, int);
 
 	if (arg == 0)
-        {
-                _putchar('0');
-                count++;
-        }
+	{
+		_putchar('0');
+		count++;
+	}
 
 	d = convert(arg, 16, 0);
 
