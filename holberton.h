@@ -27,6 +27,7 @@ int pf_helper(const char *fmt, p_t funcarr[], va_list args);
 int _printf(const char *fmt, ...);
 void (*print_array(char s))();
 void print_number(int i);
+int print_p(va_list sval);
 int print_int(va_list dval);
 int print_string(va_list sval);
 int print_char(va_list c);

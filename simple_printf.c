@@ -31,7 +31,7 @@ int pf_helper(const char *fmt, p_t funcarr[], va_list args)
 		if (flag)
 			break;
 
-		for (j = 0; funcarr[j].c; j++)
+		for (j = 0; j < 15; j++)
 		{
 			if (fmt[i + 1] == *funcarr[j].c)
 			{
@@ -73,6 +73,7 @@ int _printf(const char *format, ...)
 		{"%", print_perc},
 		{"S", print_strstr},
 		{"u", print_un},
+		{"p", print_p},
 		{0, NULL}
 	};
 	va_list args;
