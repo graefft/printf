@@ -31,7 +31,7 @@ int pf_helper(const char *fmt, p_t funcarr[], va_list args)
 		if (flag)
 			break;
 
-		for (j = 0; j < 15; j++)
+		for (j = 0; funcarr[j].c; j++)
 		{
 			if (fmt[i + 1] == *funcarr[j].c)
 			{
@@ -81,6 +81,7 @@ int _printf(const char *format, ...)
 	va_start(args, format);
 
 	counter = pf_helper(format, funcarr, args);
+	_putchar(-1);
 
 	va_end(args);
 
